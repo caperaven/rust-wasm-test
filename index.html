@@ -8,12 +8,20 @@
 </head>
 <body>
     <script type="module">
-        import init, {add} from "/bin/wasm_lib.js";
+        import init, {add, add_vectors, Vector2} from "/bin/wasm_lib.js";
 
         async function run() {
             await init();
-            const result = add(2, 2);
-            alert(result);
+            console.log(add(2, 2));
+
+            const v1 = Vector2.new(1, 1);
+            const v2 = Vector2.new(2, 3);
+
+            const result = add_vectors(v1, v2);
+            console.log(result.x, result.y);
+
+            result.add(Vector2.new(2, 2));
+            console.log(result.x, result.y);
         }
 
         run();
